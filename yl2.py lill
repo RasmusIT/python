@@ -1,0 +1,6 @@
+import turtle
+
+turtle.color("blue")
+turtle.circle(50)
+turtle.color("white, blue")
+turtle.circle(49)

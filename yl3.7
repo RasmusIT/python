@@ -1,0 +1,23 @@
+import turtle
+
+# Muutujad
+kylje_pikkus = 100            
+nurk = 120                   
+kujundi_varv = "blue"
+
+# Turtle seaded
+t = turtle.Turtle()
+t.pensize(2)
+t.pencolor(kujundi_varv)
+t.speed(5)
+
+for i in range(3):
+
+    for _ in range(3):
+        t.forward(kylje_pikkus)
+        t.right(nurk)
+    t.penup()
+    t.forward(kylje_pikkus * 1.5)
+    t.pendown()
+    t.hideturtle()
+turtle.done()

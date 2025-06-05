@@ -6,20 +6,20 @@ import turtle
 
 # 1. Ilmaennustuse rakendus
 try:
-c = input("Lisa kraadid: ")
-if c < 0:
-    print("Kanna talveriideid")
-elif c>=0 and c<15:
-    print("Kanna kevad-sügis rõivaid")
-else:
-    print("Kanna suveriideid")
+    c = input("Lisa kraadid: ")
+    if c < 0:
+        print("Kanna talveriideid")
+    elif c>=0 and c<15:
+        print("Kanna kevad-sügis rõivaid")
+    else:
+        print("Kanna suveriideid")
 except:
-    print("Pane täisarv!")
+        print("Pane täisarv!")
 
 
 # 2. Matemaatika test
-a = random.ramdint(1,10)
-b = random.ramdint(1,10)
+a = random.randint(1,10)
+b = random.randint(1,10)
 vastus = int(input(str(a)+"*"+str(b)+"="))
 if a*b == vastus:
     print("Tubli!")
@@ -39,12 +39,12 @@ else:
 # kull = 1
 # kiri = 0
 mynt = random.randint(0,1)
-arva = int(input("Vali kull või kiri: "))
-if (mynt == 0: and arva == "kiri") or (mynt == 1 and arva == "kull"):
+arva = input("Vali kull või kiri: ")
+if (mynt == 0 and arva == "kiri") or (mynt == 1 and arva == "kull"):
     vastus = "green"
 else:
     vastus = "red"
 print(mynt)
-turtle:color(vastus)
+turtle.color(vastus)
 turtle.circle(100)
 turtle.done()
