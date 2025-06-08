@@ -1,197 +1,213 @@
-# 24.10.2024 Rasmus
-# Ülesanne 9
-
 import random
 
-# Genereeri ja kuva arvud arvud 1-20
-for i in range(1,21):
-    print(i, end=" ")
+# 1. Genereeri ja kuva arvud 1-20
+arvud_1_20 = list(range(1, 21))
+print("Arvud 1-20:", arvud_1_20)
 
+# 2. Genereeri ja kuva 20 suvalist arvu vahemikus 1-99
+suvalised_arvud = [random.randint(1, 99) for _ in range(20)]
+print("20 suvalist arvu 1-99 vahemikus:", suvalised_arvud)
 
+# 3. Kasuta etteantud loendit
+arvud = [60, 5, 4, 42, 99, 67, 47, 22, 34, 8, 85, 50, 94, 39, 54, 83, 27, 40, 17, 75]
 
+# 4. Leia paaris ja paaritud arvud
+paarisarvud = []
+paaritudarvud = []
 
+for arv in arvud:
+    if arv % 2 == 0:
+        paarisarvud.append(arv)
+    else:
+        paaritudarvud.append(arv)
 
+print("Paarisarvud:", paarisarvud)
+print("Paaritud arvud:", paaritudarvud)
 
+# 5. Summa arvutused
+summa_paaris = sum(paarisarvud)
+summa_paaritud = sum(paaritudarvud)
 
+print(f"Paarisarvude summa: {summa_paaris}")
+print(f"Paaritute arvude summa: {summa_paaritud}")
 
+# 1. Kuva arvud 1-42 ja lisa TIK, TAK või TIKTAK
+print("1–42 koos TIK/TAK märgetega:")
+for i in range(1, 43):
+    if i % 3 == 0 and i % 5 == 0:
+        print(f"{i} TIKTAK")
+    elif i % 3 == 0:
+        print(f"{i} TIK")
+    elif i % 5 == 0:
+        print(f"{i} TAK")
+    else:
+        print(i)
 
+print("\n---\n")
 
-print(f"Suvaline arv: {random.randint(1, 20)}")
+# 2. Leia arvud vahemikus 200–320, mis jaguvad 7-ga, aga mitte 5-ga
+sobivad_arvud = [str(x) for x in range(200, 321) if x % 7 == 0 and x % 5 != 0]
+print("Arvud vahemikus 200-320, mis jagunevad 7-ga, aga mitte 5-ga:")
+print(", ".join(sobivad_arvud))
 
+print("\n---\n")
 
+# 3. Kuva nimekirjast unikaalsed nimed
+nimed = ['Martin', 'Tõnu', 'Andres', 'Tõnu', 'Andres', 'Andres', 'Andres',
+         'Tõnu', 'Marko', 'Mari', 'Jüri', 'Liis', 'Marko', 'Piret', 'Anu']
 
+unikaalsed_nimed = list(set(nimed))
+print("Unikaalsed nimed:")
+print(unikaalsed_nimed)
+ryhma_hinded = ["Mari 4.9", "Jüri 3.1", "Kadri 4.6", "Marko 4.7", "Liis 4.9",
+                "Andres 4.2", "Anu 4.7", "Martin 4.2", "Piret 4.2", "Tõnu 4.1"]
 
+# Hinded eraldatakse ja teisendatakse float-tüüpi numbriteks
+hinded = [float(rida.split()[1]) for rida in ryhma_hinded]
 
+parim = max(hinded)
+kehvem = min(hinded)
+keskmine = sum(hinded) / len(hinded)
 
+print(f"Parim hinne: {parim}") 
+print(f"Kehvim hinne: {kehvem}")
+print(f"Keskmine hinne: {keskmine:.2f}")
+# Korrutustabel
+print("\nKorrutustabel (0–10):")
+for i in range(0, 11):
+    print(f"{i} x {i} = {i * i}")
+    
+märgid = ["+", "-", "*", "/"]
 
+oiged = 0  # Õigete vastuste arv
 
+for _ in range(10):
+    arv1 = random.randint(1, 100)
+    arv2 = random.randint(1, 100)
+    märk = random.choice(märgid)
 
+    # Vältime nulliga jagamist
+    if märk == "/" and arv2 == 0:
+        arv2 = 1
 
-# Genereeri ja kuva 20 suvalist arvu vahemikus 1-99
+    # Koosta tehe ja kuva kasutajale
+    tehe = f"{arv1} {märk} {arv2}"
+    kasutaja_vastus = input(f"{tehe} = ")
 
-for i in range(20):
- print(random.randint(1, 100), end= " ")
- print()
+    try:
+        # Arvuta õige vastus
+        if märk == "+":
+            tulemus = arv1 + arv2
+        elif märk == "-":
+            tulemus = arv1 - arv2
+        elif märk == "*":
+            tulemus = arv1 * arv2
+        elif märk == "/":
+            tulemus = round(arv1 / arv2, 2)  # Ümardame 2 kohta
 
+        # Kontrolli, kas kasutaja vastas õigesti (ka ümardus)
+        if abs(float(kasutaja_vastus) - tulemus) < 0.01:
+            print("Õige!")
+            oiged += 1
+        else:
+            print(f"Vale! Õige vastus oli: {tulemus}")
 
+    except:
+        print("Vigane sisend!")
 
+# Tulemus
+print(f"\nÕigeid vastuseid: {oiged}/10")
 
-
-
-
-
-# Kasuta loendit 60, 5, 4, 42, 99, 67, 47, 22, 34, 8, 85, 50, 94, 39, 54, 83, 27, 40, 17, 75
-# Leia paaris ja paaritud arvud ning lisa oma loendisse
-# Kuva paaris ja paritute arvude summad
-loend = [60, 5, 4, 42, 99, 67, 47, 22, 34, 8, 85, 50, 94, 39, 54, 83, 27, 40, 17, 75]
-paaris = []
-paaritud = []
-for i in loend:
-   if i%2==0:
-      paaris.append(i)
-   else:
-      paaritud.append(i)
-
-   print(f"Paaris arvude summa: {sum(paaris)}")
-   print(f"Paaritute arvude summa: {sum(paairtud)}")
-
-
-# Kuva arvud 1-42
-# Arvud, mis jagunevad 3, lisa tekst TIK (näiteks 3 TIK)
-# Arvud, mis jagunevad 5, lisa tekst TAK (näiteks 5 TAK)
-# Kui jagunevad mõlemaga, siis lisa tekst TIKTAK (näiteks 15 TIKTAK)
-for i in range(1,43):
-   if i%3==0:
-      print("tiktak", end=" ")
-   elif i%5==0:
-     print(i, "TAK", end=" ")
-   elif i%3==0:
-      print(i"TIK", end=" ")
-   else:
-      print(i, "TIK", end=" ")
-
-print()
-# Leia kõik arvud vahemikus 200 kuni 320, mis jaguvad 7-ga, kuid ei jagu 5-ga. Prindi need arvud komadega eraldatult ühele reale.
-for i in range(200,321):
-   if i%7==0 and i%5>0:
-      print(i, end=",")
-
-
-
-
-
-# Kuva nimekirjast unikaalsed nimed:
-nimed = ['Martin', 'Tõnu', 'Andres', 'Tõnu', 'Andres', 'Andres', 'Andres', 'Tõnu', 'Marko', 'Mari', 'Jüri', 'Liis', 'Marko', 'Piret', 'Anu']
-unikaalse_nimed = []
-
-for nimi in nimed:
-   if nimi in unikaalse_nimed:
-      unikaalse_nimed.append(nimi)
-
-
-for nimi in unikaalse_nimed:
-   print(nimi)
-
-#Sulle on saadetud õpilaste keskmised hinded, mille lisasid loendisse. Eralda hinded ning leia kogu rühma parim ja kehvem tulemus ning keskmine hinne.
-ryhma_hinded = ["Mari 4.9", "Jüri 3.1", "Kadri 4.6", "Marko 4.7", "Liis 4.9", "Andres 4.2", "Anu 4.7", "Martin 4.2", "Piret 4.2", "Tõnu 4.1"]
-
-for i in ryhma_hinded:
-   print(float(i.split(" ")[1]))
-
-
-print(f"Parim tulemus {max(hinded)}")
-print(f"Halvim tulemus {min(hinded)}")
-print(f"Keskmine tulemus {sum(hinded)/len(hinded)}")
-
-
-
-
-
-#Koosta programm, mis genereerib ja kuvab korrutustabeli, kus iga number korrutatakse iseendaga:
-#Näiteks:
-#0 x 0 = 0
-#1 x 1 = 1
-#2 x 2 = 4
-#3 x 3 = 9
-#4 x 4 = 16
-#5 x 5 = 25
-#6 x 6 = 36
-#7 x 7 = 49
-#8 x 8 = 64
-#9 x 9 = 81
-#10 x 10 = 100
-
-for i in range(11):
-   print(f"{i} x {i} = {i*i}")
-
-
-
-
-#Loo programm, mis loob suvalised tehted 1-100 arvudega.
-#Kasuta tsükli puhul alakriipsu
-#kasuta suvalise tehte märgi jaoks loendit ja sealt suvalise märgi leidmiseks random.choice()
-#Näiteks:
-["7 – 2= 45 * 69= 71 – 45= 84 / 57= 59 * 87= 84 – 71= 65 * 32= 63 – 11= 72 – 90= 29 / 93= "]
-tehted = ['+','-','*','/']
-for i in range(11):
-   i = random.randint(1,100)
-   j = random.randint(1,100)
-   tehe = random.choice(tehted)
-   if tehe=="+":
-      print(f"{i} {tehe} {j} = {i+j}")
-      vastus = int(input("vastus: "))
-      if vastus==i+j
-      print("Õige")
-      punktid+1=
-   elif tehe=="-":
-       print(f"{i} {tehe} {j} = {i-j}")
-       if vastus==i-j
-       print("Õige")
-       punktid+1=
-   elif tehe=="*":
-      print(f"{i} {tehe} {j} = {i*j}")
-      if vastus==i*j
-      print("Õige")
-      punktid+1=
+if oiged >= 5:
+    print("Hinne: A")
 else:
-      print(f"{i} {tehe} {j} = {round(i/j,2)}")
-if vastus==i/j
-print("Õige")
-punktid+1=
+    print("Hinne: MA")
+
+# Kahanev tärnide rida
+for i in range(5, 0, -1):
+    print("*" * i)
+    
 print()
-#Täienda eelmist ülesannet ja kasutaja käest küsitakse vastust.
-#Õiged vastused loetakse kokku
-#Kui saab vähemalt poole punktid, siis saab A, muul juhul MA
+for i in range(1, 6):
+    print(" " * (5 - i) + "*" * i)
+    
+print()
+for i in range(1, 6):
+    print(" " * (i - 5) + "*" * i)
 
+print()
+for i in range(5):
+    print(" " * i + "*" * (5 - i))
 
+even_nums = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 3, 32, 34, 36, 38]
+
+summa = 0
+for arv in even_nums:
+    if arv % 2 != 0:
+        print(f"Leiti paaritu arv: {arv}. Tsükkel katkestatakse.")
+        break
+    summa += arv
+else:
+    print("Tsükkel jõudis lõpuni.")
+
+print(f"Paarisarvude summa: {summa}")
 
 ev_data = [
-['vehicle', 'range', 'price'],
-['Tesla Model Y Long Range', '330', '58990'],
-['Volkswagen ID.4 Pro', '260', '39995'],
-['Ford Mustang Mach-E', '300', '42995'],
-['Audi e-tron GT', '238', '102700'],
-['Nissan Leaf', '149', '27400'],
-['BMW iX xDrive50', '324', '83995'],
-['Polestar 2', '265', '45500'],
-['Kia EV6 Long Range', '310', '47795'],
-['Mercedes-Benz EQS 450+', '350', '102310'],
-['Hyundai Kona Electric', '258', '37400']
+    ['vehicle', 'range', 'price'],
+    ['Tesla Model Y Long Range', '330', '58990'],
+    ['Volkswagen ID.4 Pro', '260', '39995'],
+    ['Ford Mustang Mach-E', '300', '42995'],
+    ['Audi e-tron GT', '238', '102700'],
+    ['Nissan Leaf', '149', '27400'],
+    ['BMW iX xDrive50', '324', '83995'],
+    ['Polestar 2', '265', '45500'],
+    ['Kia EV6 Long Range', '310', '47795'],
+    ['Mercedes-Benz EQS 450+', '350', '102310'],
+    ['Hyundai Kona Electric', '258', '37400']
 ]
- 
-keskmineOdo = []
-KeskmineHind = []
 
-for i in ev_data:
-   if i[0] != "vehicle":
-      keskmineOdo.append(int(i[1]))
-      KeskmineHind.append(int(i[2]))
+# Tabeli kuvamine
+print(f"{'Vehicle':35} {'Range (km)':>10} {'Price ($)':>10}")
+print("-" * 60)
+for row in ev_data[1:]:
+    print(f"{row[0]:35} {row[1]:>10} {row[2]:>10}")
 
-   #print(i[1])
-if i[1] > 300:
-   print(i[0])
-print(ev_data[1][0]+" "+ev_data[1][1])
+total_range = 0
+total_price = 0
+for row in ev_data[1:]:
+    total_range += int(row[1])
+    total_price += int(row[2])
 
-print(sum(keskmineOdo)/len(keskmineOdo))
-print(sum(KeskmineHind)/len(KeskmineHind))
+average_range = total_range / (len(ev_data) - 1)
+average_price = total_price / (len(ev_data) - 1)
 
+print(f"\nKeskmine läbisõit: {average_range:.1f} km")
+print(f"Keskmine hind: ${average_price:.2f}")
+
+print("\nAutod, mille läbisõit on üle 300 km:")
+for row in ev_data[1:]:
+    if int(row[1]) > 300:
+        print(f"- {row[0]} ({row[1]} km)")
+
+high_price_ranges = []
+low_price_ranges = []
+
+# Jagame autod kaheks grupiks, piiriks keskmine hind
+for row in ev_data[1:]:
+    price = int(row[2])
+    car_range = int(row[1])
+    if price > average_price:
+        high_price_ranges.append(car_range)
+    else:
+        low_price_ranges.append(car_range)
+
+avg_high_price_range = sum(high_price_ranges) / len(high_price_ranges)
+avg_low_price_range = sum(low_price_ranges) / len(low_price_ranges)
+
+print(f"\nKeskmine läbisõit kallitel autodel: {avg_high_price_range:.1f} km")
+print(f"Keskmine läbisõit odavamatel autodel: {avg_low_price_range:.1f} km")
+
+if avg_high_price_range > avg_low_price_range:
+    print("📈 Kallimatel autodel on keskmiselt pikem sõiduulatus.")
+else:
+    print("📉 Kallimatel autodel ei ole keskmiselt pikemat sõiduulatust.")

@@ -14,19 +14,21 @@ ladu = {
 }
 
 
-valik = "Piim"
+valik = "piim"
 kogus = 10
 try:
     if valik in ladu:
-        if kogus<= ladu[valik]["kogus"]
-        summa = kogus * ladu[valik]["hind"]
-        print(f"{valik}\nHind{ladu[valik]["hind"]}\nKogus {kogus}\nSumma: {summa}")
+        if kogus<= ladu[valik]["kogus"]:
+            summa = kogus * ladu[valik]["hind"]
+            print(f"{valik}\nHind: {ladu[valik]['hind']}\nKogus: {kogus}\nSumma: {summa:.2f}")
+            uus_kogus = ladu[valik]["kogus"] - kogus
+            ladu[valik]["kogus"] = uus_kogus
         else:
             print("Meil pole sellist kogust!")
     else:
-print("Seda toodet ei ole")
+        print("Seda toodet ei ole")
 except:
-print("Mingi jama!")
+    print("Mingi jama!")
 
 #laoseisu muutumine
 uus_kogus = ladu[valik]["kogus"] - kogus
@@ -38,7 +40,7 @@ print(ladu['piim'])
 print(ladu['piim']['hind'])
 
 
-"""
+
 # Telefoninumbrid
 
 telefonid={ 'Mari': '5957503', 'Toomas': '5719979', 'Kertu': '5201750', 'Siim': '5580027', 'Piret': '5960799', 'Jaan': '5160415', 'Lea': '5760164', 'Mart': '5337951', 'Anni': '5004818', 'Tõnu': '5721873', 'Kai': '5811884', 'Rasmus': '5859489', 'Eva': '5039393', 'Oskar': '5635812', 'Liina': '5696114', 'Peeter': '5560756', 'Sandra': '5257415', 'Heiki': '5207248', 'Kristi': '5703338', 'Urmas': '5400549' }
@@ -57,6 +59,8 @@ try:
         print("Otsitavat ei leitud!")
 except:
     print("Mingi jama")
+
+
 
 
 

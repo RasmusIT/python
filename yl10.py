@@ -11,17 +11,24 @@ import random
 
 
 arvud = []
-loop = 1
 
-while loop==1:
-    arv = int(input("Sisesta arv:"))
-    arvud.append(arv)
-    if arv == "":
-        loop = 0
+while True:
+    sisend = input("Sisesta arv (või vajuta Enter lõpetamiseks): ")
+    if sisend == "":
         break
-    arvud.append(int(arv))
+    try:
+        arv = float(sisend)
+        arvud.append(arv)
+    except ValueError:
+        print("Palun sisesta sobiv arv!")
 
-print(sum(arvud)      
+if arvud:
+    keskmine = sum(arvud) / len(arvud)
+    print(f"\nSisestasid {len(arvud)} arvu.")
+    print(f"Arvude keskmine on: {keskmine:.2f}")
+else:
+    print("Sa ei sisestanud ühtegi arvu.")
+    
 
 
 
@@ -36,26 +43,39 @@ print(sum(arvud)
 #Kui kasutaja vastab jaatavalt, genereerib programm uue juhusliku arvu ja mäng algab otsast peale.
 #Kui kasutaja otsustab mitte jätkata, tänab programm kasutajat mängus osalemise eest ja kuvab kõik senised tulemused: mitmenda katsega igal korral õige arv ära arvati.
 #Programm peab kasutama while-tsüklit nii arvude sisestamise protsessi juhtimiseks kui ka mängu kordamise otsustamiseks.
-tulemused []
-katsed = 1
-loop = 1
-arv = random.randint(1,10)
-print(arv)
-while loop=1:
-    kstdrf+=1
-    vastus = int(input("Arva ära arv 1-10: "))
-    if vastus==arv:
-        print("Õige")
-        print(f"Arvasid {katsed} korda")
-        tulemused.append(katsed)
-        uuesti = int("Kas soovid veel (j/e): ")
-        if uuesti=="j":
-            katsed = 0
+import random
+
+tulemused = []
+loop = True
+
+while loop:
+    katsed = 0
+    arv = random.randint(1, 10)
+    print(arv)  # Testimiseks võid selle hiljem eemaldada
+
+    while True:
+        katsed += 1
+        try:
+            vastus = int(input("Arva ära arv 1-10: "))
+        except ValueError:
+            print("Palun sisesta arv!")
+            continue
+
+        if vastus == arv:
+            print("Õige!")
+            print(f"Arvasid {katsed} korda.")
+            tulemused.append(katsed)
+            uuesti = input("Kas soovid veel? (j/e): ")
+            if uuesti.lower() == "j":
+                break  # alustab uut mängu
             else:
+                loop = False  # lõpetab mängu
                 break
         else:
-            print("Proovi uuesti")
-print("Mäng läbi")
+            print("Proovi uuesti!")
+
+print("Mäng läbi.")
+print("Tulemused:", tulemused)
 
 
 
